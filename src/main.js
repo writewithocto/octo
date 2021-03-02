@@ -7,6 +7,8 @@ import Extendable from '@/components/Extendable'
 import router from '@/router';
 import store from '@/store';
 
+import '@/assets/app.css'
+
 // setup the service worker
 import '@/registerServiceWorker';
 

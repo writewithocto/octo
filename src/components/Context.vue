@@ -1,11 +1,11 @@
 <template>
   <div class="container context d-flex flex-column mt-3 mt-md-5">
     <div>
-      <h5 class="card-title">Set Context</h5>
-      <h6 class="card-subtitle text-muted font-weight-normal mb-3">
+      <h5 class="text-2xl mb-2">Set Context</h5>
+      <p class="text-gray-400 mb-4">
         This will apply a global filter to only show documents that include at least one of the selected context tags.
-      </h6>
-      <div class="form-group">
+      </p>
+      <div class="mb-4">
         <label for="tags-search">Add some tags to set the context</label>
         <div class="d-flex align-items-bottom">
           <div class="flex-grow-1">
