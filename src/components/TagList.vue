@@ -1,6 +1,6 @@
 <template>
-  <div class="container d-flex flex-column py-3">
-    <Tag class="tag btn btn-secondary p-3" v-for="tag in tags" :key="tag" :tag="tag"></Tag>
+  <div class="container mx-auto sm:px-4 flex flex-col py-3">
+    <Tag class="tag inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 p-6" v-for="tag in tags" :key="tag" :tag="tag"></Tag>
   </div>
 </template>
 

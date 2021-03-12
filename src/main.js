@@ -56,7 +56,7 @@ new Vue({
     }
 
     if (/Mac|iPod|iPhone|iPad/.test(navigator.platform)) {
-      this.$store.dispatch(SET_MOD_KEY, 'CMD');
+      this.$store.dispatch(SET_MOD_KEY, '⌘ cmd')
     }
 
     if (localStorage.getItem('octo/welcome/v1') === null) {

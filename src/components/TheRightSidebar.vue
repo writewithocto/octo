@@ -1,8 +1,8 @@
 <template>
-  <simplebar class="meta p-3 p-md-2">
-    <div class="d-flex flex-column flex-grow-1">
-      <div class="d-none mb-4 d-md-flex justify-content-end">
-        <button @click="toggleMeta" class="btn btn-secondary d-flex align-items-center">
+  <simplebar class="meta p-6 md:p-2">
+    <div class="flex flex-col flex-grow">
+      <div class="hidden mb-4 md:flex justify-end">
+        <button @click="toggleMeta" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 flex items-center">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle m-0" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
             <path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
@@ -10,10 +10,10 @@
           <span class="ml-2">Hide</span>
         </button>
       </div>
-      <div v-if="document" class="d-flex flex-column flex-grow-1">
+      <div v-if="document" class="flex flex-col flex-grow">
         <div>
-          <DiscardableAction v-if="document.id" :discardedAt="document.discardedAt" :onDiscard="discardDocument" :onRestore="restoreDocument" class="w-100 btn btn-secondary p-3 p-md-2"></DiscardableAction>
-          <button @click.stop="duplicateDocument" class="btn btn-secondary p-3 p-md-2 d-flex align-items-center w-100 mt-2">
+          <DiscardableAction v-if="document.id" :discardedAt="document.discardedAt" :onDiscard="discardDocument" :onRestore="restoreDocument" class="w-full inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 p-6 md:p-2"></DiscardableAction>
+          <button @click.stop="duplicateDocument" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 p-6 md:p-2 flex items-center w-full mt-2">
             <svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="bi bi-file-earmark-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
               <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>
@@ -21,7 +21,7 @@
             </svg>
             <span class="ml-3">Duplicate</span>
           </button>
-          <button v-if="hasCodeblocks" @click="openSandbox" class="btn btn-secondary p-3 p-md-2 d-flex align-items-center w-100 mt-2">
+          <button v-if="hasCodeblocks" @click="openSandbox" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 p-6 md:p-2 flex items-center w-full mt-2">
             <svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="bi bi-journal-code" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
               <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
@@ -31,33 +31,33 @@
           </button>
         </div>
         <div class="mt-4">
-          <Tag v-for="tag in document.tags" :key="tag" :tag="tag" class="item rounded p-3 my-1 px-md-2 py-md-1"></Tag>
+          <Tag v-for="tag in document.tags" :key="tag" :tag="tag" class="item rounded p-6 my-1 md:px-2 md:py-1"></Tag>
         </div>
         <div class="mt-4">
-          <div v-for="task in document.tasks" class="d-flex align-items-center px-3 py-2 my-1 px-md-2 py-md-1">
+          <div v-for="task in document.tasks" class="flex items-center px-3 py-2 my-1 md:px-2 md:py-1">
             <svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="bi bi-check2-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
               <path fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z"/>
             </svg>
-            <span class="flex-grow-1 overflow-hidden text-truncate ml-3">{{ task }}</span>
+            <span class="flex-grow overflow-hidden truncate ml-3">{{ task }}</span>
           </div>
         </div>
-        <div class="d-flex flex-column justify-content-end flex-grow-1 px-3 p-md-2 mt-4 mb-3 mb-md-1">
+        <div class="flex flex-col justify-end flex-grow px-3 md:p-2 mt-4 mb-3 md:mb-1">
           <div v-if="document.updatedAt">
-            <small class="text-muted">Last Saved</small>
-            <div class="text-capitalize pt-2 pt-md-1">{{ savedAt }}</div>
+            <small class="text-gray-700">Last Saved</small>
+            <div class="capitalize pt-2 md:pt-1">{{ savedAt }}</div>
           </div>
-          <div v-if="document.createdAt" class="mt-3 mt-md-2">
-            <small class="text-muted">Created</small>
-            <div class="pt-2 pt-md-1">{{ createdAt }}</div>
+          <div v-if="document.createdAt" class="mt-3 md:mt-2">
+            <small class="text-gray-700">Created</small>
+            <div class="pt-2 md:pt-1">{{ createdAt }}</div>
           </div>
-          <div v-if="document.updatedAt" class="mt-3 mt-md-2">
-            <small class="text-muted">Updated</small>
-            <div class="pt-2 pt-md-1">{{ updatedAt }}</div>
+          <div v-if="document.updatedAt" class="mt-3 md:mt-2">
+            <small class="text-gray-700">Updated</small>
+            <div class="pt-2 md:pt-1">{{ updatedAt }}</div>
           </div>
-          <div v-if="document.discardedAt" class="mt-3 mt-md-2">
-            <small class="text-muted">Discarded</small>
-            <div class="pt-2 pt-md-1">{{ discardedAt }}</div>
+          <div v-if="document.discardedAt" class="mt-3 md:mt-2">
+            <small class="text-gray-700">Discarded</small>
+            <div class="pt-2 md:pt-1">{{ discardedAt }}</div>
           </div>
         </div>
       </div>

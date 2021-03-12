@@ -1,45 +1,45 @@
 <template>
-  <div class="document-list container-fluid container-xl d-flex flex-column">
+  <div class="document-list container mx-auto sm:px-4 max-w-full mx-auto sm:px-4 container min-w-xl mx-auto sm:px-4 flex flex-col">
     <p class="toolbar">
       <TagLabel v-if="tag">{{ tag }}</TagLabel>
-      <span v-else class="action text-capitalize">{{ action }}</span>
+      <span v-else class="action capitalize">{{ action }}</span>
     </p>
-    <div class="form-group">
-      <div class="d-flex align-items-bottom">
-        <div class="flex-grow-1">
-          <div class="d-flex">
-            <input v-model="filterText" ref="input" type="text" class="form-control d-block" placeholder="Start typing to filter the list..." autocomplete="off">
+    <div class="mb-4">
+      <div class="flex align-items-bottom">
+        <div class="flex-grow">
+          <div class="flex">
+            <input v-model="filterText" ref="input" type="text" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded block" placeholder="Start typing to filter the list..." autocomplete="off">
             <div class="monospace ml-2">
-              <label class="btn btn-primary btn-toggle">
+              <label class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 btn-toggle">
                 <div class="custom-control custom-checkbox">
-                  <input v-model="filterRegex" type="checkbox" class="custom-control-input d-flex">
-                  <span class="custom-control-label d-flex">.*</span>
+                  <input v-model="filterRegex" type="checkbox" class="custom-control-input flex">
+                  <span class="custom-control-label flex">.*</span>
                 </div>
               </label>
             </div>
             <div class="monospace ml-1">
-              <label class="btn btn-primary btn-toggle">
+              <label class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 btn-toggle">
                 <div class="custom-control custom-checkbox">
-                  <input v-model="filterCase" type="checkbox" class="custom-control-input d-flex">
-                  <span class="custom-control-label d-flex">Aa</span>
+                  <input v-model="filterCase" type="checkbox" class="custom-control-input flex">
+                  <span class="custom-control-label flex">Aa</span>
                 </div>
               </label>
             </div>
           </div>
         </div>
       </div>
-      <small class="form-text text-muted mt-2">{{ filterMessage }}</small>
+      <small class="block mt-1 text-gray-700 mt-2">{{ filterMessage }}</small>
     </div>
-    <div class="form-group">
-      <button @click="toggleIsEditing" class="btn btn-secondary">{{ isEditing ? 'Cancel' : 'Edit Documents' }}</button>
-      <button v-if="canMerge" @click="mergeDocuments" class="btn btn-secondary ml-2">Merge Documents</button>
+    <div class="mb-4">
+      <button @click="toggleIsEditing" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700">{{ isEditing ? 'Cancel' : 'Edit Documents' }}</button>
+      <button v-if="canMerge" @click="mergeDocuments" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 ml-2">Merge Documents</button>
     </div>
     <div>
-      <p v-if="isEditing" class="text-muted">Select two or more documents to merge them together.</p>
+      <p v-if="isEditing" class="text-gray-700">Select two or more documents to merge them together.</p>
     </div>
     <Document v-for="document in visibleDocuments" @click.native="selectDocument(document.id)" :key="document.id" v-bind="document"></Document>
-    <div class="d-flex justify-content-center mb-5">
-      <div v-if="showLoadMore" @click="loadMore" class="btn btn-secondary p-3 d-flex align-items-center">
+    <div class="flex justify-center mb-5">
+      <div v-if="showLoadMore" @click="loadMore" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700 p-6 flex items-center">
         <svg width="1.25em" height="1.25em" viewBox="0 0 16 16" class="bi bi-file-earmark-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
           <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"/>

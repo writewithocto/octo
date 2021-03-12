@@ -1,14 +1,14 @@
 <template>
-  <div class="d-flex flex-column flex-grow-1">
-    <div class="container-fluid container-xl d-flex flex-grow-1">
-      <div class="editor d-flex flex-column flex-grow-1 min-w-0" @click="focusEditor">
+  <div class="flex flex-col flex-grow">
+    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4 container min-w-xl mx-auto sm:px-4 flex flex-grow">
+      <div class="editor flex flex-col flex-grow min-w-0" @click="focusEditor">
         <div class="gutter" @click="focusEditorStart"></div>
         <MarkdownEditor ref="editable" class="editable" :theme="theme" :initialCursor="initialCursor" :initialVimMode="initialVimMode" :settings="settings" :value="document.text" @input="input" @ready="onReady" />
-        <div class="gutter flex-grow-1" @click="focusEditorEnd"></div>
+        <div class="gutter flex-grow" @click="focusEditorEnd"></div>
       </div>
     </div>
-    <div v-if="!showRightSidebar && currentDoc" class="position-fixed top-2 right-2 z-index-10 d-none d-md-block">
-      <button @click="toggleMeta" class="btn btn-secondary">
+    <div v-if="!showRightSidebar && currentDoc" class="fixed top-2 right-2 z-index-10 hidden md:block">
+      <button @click="toggleMeta" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700">
         <InfoLabel>Info</InfoLabel>
       </button>
     </div>

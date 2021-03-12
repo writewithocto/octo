@@ -1,12 +1,12 @@
 <template>
   <section>
-    <h4 class="font-weight-normal mt-3 mt-md-5">Export Documents</h4>
+    <h4 class="font-normal mt-3 md:mt-12">Export Documents</h4>
     <hr>
-    <div class="form-group">
+    <div class="mb-4">
       <label>Bundle all documents as JSON. Documents will be decrypted if the necessary keys are available.</label>
     </div>
-    <div class="form-group">
-      <router-link :to="{ name: 'export' }" class="btn btn-secondary">Export Documents</router-link>
+    <div class="mb-4">
+      <router-link :to="{ name: 'export' }" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-600 text-white hover:bg-gray-700">Export Documents</router-link>
     </div>
   </section>
 </template>

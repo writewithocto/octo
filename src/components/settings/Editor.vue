@@ -1,52 +1,52 @@
 <template>
   <section>
-    <h4 class="font-weight-normal mt-3 mt-md-5">Editor</h4>
+    <h4 class="font-normal mt-3 md:mt-12">Editor</h4>
     <hr>
     <Extendable scope="app.settings.editor">
-      <div class="form-group">
+      <div class="mb-4">
         <label for="config-tab-size">Tab length</label>
-        <input v-model="tabSize" type="number" min="2" id="config-tab-size" class="form-control">
-        <small class="text-muted">Number of spaces per tab (minimum: 2)</small>
+        <input v-model="tabSize" type="number" min="2" id="config-tab-size" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded">
+        <small class="text-gray-700">Number of spaces per tab (minimum: 2)</small>
       </div>
-      <div class="form-group">
+      <div class="mb-4">
         <label for="config-key-map">Keymaps</label>
         <div>
-          <label class="btn btn-primary btn-toggle">
-            <div class="custom-control custom-radio d-flex align-items-center">
-              <input v-model="keyMap" type="radio" value="default" class="custom-control-input d-flex">
-              <span class="custom-control-label d-flex">Default</span>
+          <label class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 btn-toggle">
+            <div class="custom-control custom-radio flex items-center">
+              <input v-model="keyMap" type="radio" value="default" class="custom-control-input flex">
+              <span class="custom-control-label flex">Default</span>
             </div>
           </label>
-          <label class="btn btn-primary btn-toggle ml-2">
-            <div class="custom-control custom-radio d-flex align-items-center">
-              <input v-model="keyMap" type="radio" value="vim" class="custom-control-input d-flex">
-              <span class="custom-control-label d-flex">Vim</span>
+          <label class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 btn-toggle ml-2">
+            <div class="custom-control custom-radio flex items-center">
+              <input v-model="keyMap" type="radio" value="vim" class="custom-control-input flex">
+              <span class="custom-control-label flex">Vim</span>
             </div>
           </label>
         </div>
-        <small class="text-muted">Select an alternate keymapping</small>
+        <small class="text-gray-700">Select an alternate keymapping</small>
       </div>
-      <div class="form-group">
-        <h5 class="font-weight-normal">Images</h5>
-        <div class="form-group">
-          <p>This setting determines whether or not image tags (e.g. <code class="text-muted">![alt text](/path/to/image)</code>) will render images in your documents.</p>
+      <div class="mb-4">
+        <h5 class="font-normal">Images</h5>
+        <div class="mb-4">
+          <p>This setting determines whether or not image tags (e.g. <code class="text-gray-700">![alt text](/path/to/image)</code>) will render images in your documents.</p>
         </div>
-        <div class="form-group">
+        <div class="mb-4">
           <div>
-            <label class="btn btn-primary btn-toggle">
-              <div class="custom-control custom-checkbox d-flex align-items-center">
-                <input v-model="imagesEnabled" type="checkbox" class="custom-control-input d-flex">
-                <span class="custom-control-label d-flex">Enable Images</span>
+            <label class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 btn-toggle">
+              <div class="custom-control custom-checkbox flex items-center">
+                <input v-model="imagesEnabled" type="checkbox" class="custom-control-input flex">
+                <span class="custom-control-label flex">Enable Images</span>
               </div>
             </label>
-            <label class="btn btn-primary btn-toggle ml-2">
-              <div class="custom-control custom-checkbox d-flex align-items-center">
-                <input v-model="showCaptions" :disabled="!imagesEnabled" type="checkbox" class="custom-control-input d-flex">
-                <span class="custom-control-label d-flex">Show Captions</span>
+            <label class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 btn-toggle ml-2">
+              <div class="custom-control custom-checkbox flex items-center">
+                <input v-model="showCaptions" :disabled="!imagesEnabled" type="checkbox" class="custom-control-input flex">
+                <span class="custom-control-label flex">Show Captions</span>
               </div>
             </label>
           </div>
-          <small class="text-muted">Note: Captions are pulled from alt text and rendered under your images in the image container.</small>
+          <small class="text-gray-700">Note: Captions are pulled from alt text and rendered under your images in the image container.</small>
         </div>
       </div>
     </Extendable>

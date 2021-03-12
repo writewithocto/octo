@@ -1,9 +1,9 @@
 <template>
-  <div id="app" class="d-flex flex-column flex-grow-1 flex-shrink-1" :class="sizes">
+  <div id="app" class="flex flex-col flex-grow flex-shrink" :class="sizes">
     <simplebar v-if="context.active || context.editing" class="context-banner relative-fixed">
-      <div class="d-flex align-items-center text-center">
+      <div class="flex items-center text-center">
         <div v-if="contextTags.length" class="context-tags">
-          <Tag v-for="tag in contextTags" :key="tag" :tag="tag" class="context-tag d-inline-flex" />
+          <Tag v-for="tag in contextTags" :key="tag" :tag="tag" class="context-tag inline-flex" />
         </div>
         <div v-else class="context-placeholder">no active tags</div>
         <div @click="deactivateContext" class="context-close">
@@ -13,13 +13,13 @@
         </div>
       </div>
     </simplebar>
-    <div class="d-flex flex-column flex-grow-1 flex-shrink-1 position-relative min-h-0">
-      <router-view class="flex-grow-1 flex-shrink-1 min-h-0"></router-view>
-      <div class="card notification position-fixed top-0 right-0 m-3 m-md-2" :class="{ 'd-none': !showModal }">
-        <div class="card-body notification-body">
+    <div class="flex flex-col flex-grow flex-shrink relative min-h-0">
+      <router-view class="flex-grow flex-shrink min-h-0"></router-view>
+      <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 notification fixed top-0 right-0 m-6 md:m-2" :class="{ 'hidden': !showModal }">
+        <div class="flex-auto p-6 notification-body">
           <p>An update is available. Refresh the app to apply.</p>
-          <button type="button" class="btn btn-sm btn-primary" @click="refreshPage">Refresh Now</button>
-          <button type="button" class="btn btn-sm btn-secondary" @click="hideModal">Later</button>
+          <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline py-1 px-2 leading-tight text-xs  bg-blue-600 text-white hover:bg-blue-600" @click="refreshPage">Refresh Now</button>
+          <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline py-1 px-2 leading-tight text-xs  bg-gray-600 text-white hover:bg-gray-700" @click="hideModal">Later</button>
         </div>
       </div>
     </div>

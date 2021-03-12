@@ -1,5 +1,5 @@
 <template>
-  <div class="container context d-flex flex-column mt-3 mt-md-5">
+  <div class="container mx-auto sm:px-4 context flex flex-col mt-3 md:mt-12">
     <div>
       <h5 class="text-2xl mb-2">Set Context</h5>
       <p class="text-gray-400 mb-4">
@@ -7,23 +7,23 @@
       </p>
       <div class="mb-4">
         <label for="tags-search">Add some tags to set the context</label>
-        <div class="d-flex align-items-bottom">
-          <div class="flex-grow-1">
-            <input v-model="input" @input="first" @keydown.space.prevent="toggleTag" @keydown.enter.exact="toggleTag" @keydown.221.prevent="down" @keydown.down.prevent="down" @keydown.219.prevent="up" @keydown.up.prevent="up" ref="input" type="text" class="form-control" id="tag-search" placeholder="Start typing to filter the list..." autocomplete="off">
-            <small class="form-text text-muted mt-2 d-none d-md-block">Navigate the list below with <span class="key">up</span> or <span class="key">down</span> and toggle tags with <span class="key">space</span> or <span class="key">enter</span></small>
+        <div class="flex align-items-bottom">
+          <div class="flex-grow">
+            <input v-model="input" @input="first" @keydown.space.prevent="toggleTag" @keydown.enter.exact="toggleTag" @keydown.221.prevent="down" @keydown.down.prevent="down" @keydown.219.prevent="up" @keydown.up.prevent="up" ref="input" type="text" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded" id="tag-search" placeholder="Start typing to filter the list..." autocomplete="off">
+            <small class="block mt-1 text-gray-700 mt-2 hidden md:block">Navigate the list below with <span class="key">up</span> or <span class="key">down</span> and toggle tags with <span class="key">space</span> or <span class="key">enter</span></small>
           </div>
         </div>
       </div>
-      <div class="form-group">
-        <simplebar ref="tagsContainer" class="dropdown-menu d-block mt-0">
+      <div class="mb-4">
+        <simplebar ref="tagsContainer" class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded block mt-0">
           <div>
             <div v-if="filtered.length">
-              <div v-for="(tag, index) in filtered" @click="selectTag(tag)" ref="tags" class="dropdown-item d-flex justify-content-between" :class="{ active: (index === activeIndex), selected: isSelected(tag) }">
+              <div v-for="(tag, index) in filtered" @click="selectTag(tag)" ref="tags" class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0 flex justify-between" :class="{ active: (index === activeIndex), selected: isSelected(tag) }">
                 <span>{{ tag }}</span>
                 <span v-if="isSelected(tag)">selected</span>
               </div>
             </div>
-            <div v-else class="dropdown-item">No results...</div>
+            <div v-else class="block w-full py-1 px-6 font-normal text-gray-900 whitespace-no-wrap border-0">No results...</div>
           </div>
         </simplebar>
       </div>
